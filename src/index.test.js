@@ -9,11 +9,12 @@ describe('our first test', () => {
 });
 
 describe('index.html',()=> {
-	it('should passs', ()=>  {
+	it('should passs', (done)=>  {
 		const INDEX = fs.readFileSync('src/index.html', "utf-8");
 		jsdom.env(INDEX, function(err, window){
 			const P1 = window.document.getElementsByTagName('p')[0];
-			expect(P1.innerHTML).to.equal("Hello World!");
+			expect(P1.innerHTML).to.equal("Hello World?");
+			done();
 			window.close();
 		})
 	})
